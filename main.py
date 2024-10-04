@@ -378,7 +378,7 @@ async def get(id: int):
                 target_id=tid(book.id), hx_swap="outerHTML")
     btn.style = 'background-color: red; border: none;'
     return Div(H2(f"Book Title: {book.title}"),
-            H6(f"Published: {"Yes" if book.published else "No"}"),
+            H6(f"Published: {'Yes' if book.published else 'No'}"),
             btn)
 
 serve()
