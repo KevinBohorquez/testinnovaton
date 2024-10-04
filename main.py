@@ -14,7 +14,7 @@ css = Style('''
     
     Body {
         min-height: 100vh;
-        background: url(static/background.jpg)
+        background: url(/static/background.jpg);
     }
     
     .header-text{
@@ -182,9 +182,10 @@ auth_middleware = user_pwd_auth(
 
 app = FastHTML(middleware=[auth_middleware],
             hdrs=(picolink,
-                    css))
-
+                    css))   
 rt = app.route
+
+app.mount('/static', StaticFiles(directory='static'), name='static')
 
 id_curr = 'current-book'
 def mk_input(**kw): return Input(**kw)
